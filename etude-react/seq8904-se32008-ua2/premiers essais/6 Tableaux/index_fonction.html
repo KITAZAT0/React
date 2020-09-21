@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="mountNode"></div>
+    <script type="text/babel">
+        function MyComponent() {
+            const numbers = [1, 2, 3, 4, 5];
+            return (
+                    <h1 >
+                        {numbers.map((number, index) => <li key={index}>{number * 3}</li>)}
+                    </h1>
+                    );
+                }
+        ReactDOM.render(
+                <MyComponent />,
+                document.getElementById('mountNode')
+                );
+    </script>
+</body>
+
+</html>

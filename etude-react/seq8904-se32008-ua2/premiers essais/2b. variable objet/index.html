@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="mountNode1"></div>
+
+  <script type="text/babel">
+      let mountNode = document.getElementById('mountNode1');
+      const message= {
+        text: 'Bienvenue',
+        erreur: 'Au revoir'
+      };
+
+      class MyComponent extends React.Component {
+        render() {
+          return (
+          <div>
+            <h1>{message.text}</h1>
+            <h1>{message.erreur}</h1>
+          </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyComponent name="you" color ="blue"/>, mountNode);
+    </script>
+</body>
+
+</html>

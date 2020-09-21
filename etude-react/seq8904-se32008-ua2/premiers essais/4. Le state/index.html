@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="mountNode"></div>
+
+  <script type="text/babel">
+      var mountNode = document.getElementById('mountNode');
+
+      class MyComponent extends React.Component {
+        constructor() {
+          super();
+          this.state = {name: "Max",
+                        color: "blue"};
+          this.changeName = this.changeName.bind(this)
+        }
+
+        changeName() {
+          this.setState({name: "Eve"});
+          this.setState({color: "pink"});
+        }
+
+        render() {
+          return (
+            <h1 style={{color: this.state.color}} onClick={this.changeName}>
+              Hello, {this.state.name}!
+            </h1>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyComponent />, mountNode);
+    </script>
+</body>
+
+
+</html>

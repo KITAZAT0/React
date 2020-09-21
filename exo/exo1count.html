@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>exo1 count!</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body id="countNode">
+
+    <script type="text/babel">
+        var countNode = document.getElementById('countNode');
+
+        class MyComponent extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    counter: 0
+                };
+                this.increment = this.increment.bind(this)
+            }
+            increment() {
+                this.setState({ counter: this.state.counter + 1 });
+            }
+
+
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.increment} >clique +1</button>
+                        <p>{this.state.counter}</p>
+                    </div>
+
+                );
+            }
+        }
+
+        ReactDOM.render(<MyComponent />, countNode);
+    </script>
+</body>
+
+
+</html>

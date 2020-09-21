@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+    <div id="mountNode"></div>
+
+    <script type="text/babel">
+
+        /* list.concat(addItem); */
+        /* newarray = numbers.map(myFunction) */
+
+
+        var mountNode = document.getElementById('mountNode');
+
+
+        class MyComponent extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    list: ["Alfred", "Maurice", "Ginette"],
+                };
+                this.addItem = this.addItem.bind(this)
+            };
+
+            addItem(item) {
+                this.setState({ list: this.state.list.concat([this.input.value]) });
+            }
+            render() {
+                return (
+                    <div>
+                        <input ref={(input) => this.input = input} />  {/* ref input devient Object avec le this.input prend comme valeur input*/}
+                        <div>
+                            <ul>
+                                {this.state.list.map((item, index) => (
+                                    <li key={index}>{index} : {item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <button onClick={this.addItem}>Add</button>
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(<MyComponent />, mountNode);
+    </script>
+</body>
+
+</html>

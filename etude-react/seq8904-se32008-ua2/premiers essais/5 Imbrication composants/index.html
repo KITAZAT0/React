@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+
+<body>
+  <div id="mountNode"></div>
+
+  <script type="text/babel">
+      var mountNode = document.getElementById('mountNode');
+
+      class Bonjour extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>Hello Tout Le Monde</h1>
+            </div>
+          );
+        }
+      }
+      class MyComponent extends React.Component {
+        constructor() {
+          super();
+          this.state = {textSaisi: ""}
+          this.recopie = this.recopie.bind(this)
+        }
+
+        recopie() {
+          this.setState({textSaisi: this.resultInput.value});
+        }
+
+        render() {
+          return (
+            <>
+              <Bonjour/>
+              <input ref={(message) => this.resultInput = message} onChange={this.recopie} />
+              <p>{this.state.textSaisi}</p>
+            </>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyComponent/>, mountNode);
+    </script>
+</body>
+
+</html>

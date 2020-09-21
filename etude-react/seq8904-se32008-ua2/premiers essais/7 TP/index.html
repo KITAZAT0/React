@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="mountNode"></div>
+
+  <script type="text/babel">
+      var mountNode = document.getElementById('mountNode');
+
+      class MainComponent extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            list: ["Alfred","Alphonse"]
+          };
+          this.addItem = this.addItem.bind(this);
+        }
+
+        addItem() {
+          console.log(this.result);
+          this.setState({list: this.state.list.concat([this.result.value])});
+          this.result.value = "";
+        }
+
+        render() {
+          return (
+            <div>
+              <input ref={(input) => this.result = input}  />            
+              <ul>
+                {this.state.list.map((item, i) => {
+                  return <li key={i}>{i} - {item}</li>;
+                })}
+              </ul>
+
+              <button onClick={this.addItem}>Add</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MainComponent/>, mountNode);
+    </script>
+</body>
+
+</html>

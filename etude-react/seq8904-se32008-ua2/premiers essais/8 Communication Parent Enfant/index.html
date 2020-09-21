@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="mountNode"></div>
+
+  <script type="text/babel">
+      var mountNode = document.getElementById('mountNode');
+
+      class InputComponent extends React.Component {
+        constructor() {
+          super();
+          this.state = {query: ""};
+          this.update = this.update.bind(this);
+        }
+
+        update() {
+          this.setState({query: this.input.value});
+        }
+
+        render() {
+          return (
+            <>
+              <input placeholder={this.props.valDefaut} ref={(input) => this.input = input} onChange={this.update} />
+              <p>{this.state.query}</p>
+            </>
+          );
+        }
+      }
+
+      class MainComponent extends React.Component {
+        constructor() {
+          super();
+          this.state = {name: "you"};
+        }
+
+        render() {
+          return (
+            <>
+              <h1>
+                Hello, {this.state.name}!
+              </h1>
+              <InputComponent valDefaut="Votre nom"/>
+            </>
+          );
+        }
+      }
+
+      ReactDOM.render(<MainComponent color="blue" />, mountNode);
+    </script>
+</body>
+
+</html>

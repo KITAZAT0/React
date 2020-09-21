@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="mountNode"></div>
+
+  <script type="text/babel">
+      var mountNode = document.getElementById('mountNode');
+
+      class InputComponent extends React.Component {
+
+        update() {
+          this.props.comParent(this.result.value);
+        }
+
+        render() {
+          return (
+            <>
+              <input ref={(input) => this.result = input} onChange={this.update} />
+            </>
+          );
+        }
+      }
+
+      class MainComponent extends React.Component {
+        constructor() {
+          super();
+          this.state = {name: "you"};
+          this.comChild = this.comChild.bind(this)
+        }
+
+        comChild(value) {
+          console.log(value);
+        }
+
+        render() {
+          return (
+            <>
+              <h1>
+                Hello, {this.state.name}!
+              </h1>
+              <InputComponent comParent = {this.comChild} />
+            </>
+          );
+        }
+      }
+
+      ReactDOM.render(<MainComponent color="blue" />, mountNode);
+    </script>
+</body>
+
+</html>

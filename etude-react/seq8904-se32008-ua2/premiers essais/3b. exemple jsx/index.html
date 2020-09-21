@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="mountNode"></div>
+
+  <script type="text/babel">
+      var mountNode = document.getElementById('mountNode');
+
+      class MyComponent extends React.Component {
+        render() {
+          return (
+            <h1 style={{color: this.props.color ? this.props.color : 'red'}}>Hello, {this.props.name}!</h1>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyComponent name="you" />, mountNode);
+    </script>
+</body>
+
+</html>

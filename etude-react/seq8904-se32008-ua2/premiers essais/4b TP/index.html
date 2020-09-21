@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="mountNode"></div>
+
+  <script type="text/babel">
+      var mountNode = document.getElementById('mountNode');
+
+      class MyComponent extends React.Component {
+        
+        constructor(){
+          super();
+          this.state = {counter: 0} 
+          this.increment = this.increment.bind(this)        
+        }
+        increment(){
+          this.setState({counter: this.state.counter + 1})
+        }
+      render(){
+          return(
+          <div>
+            <button onClick={this.increment}>Like</button>
+            <p>{this.state.counter}</p>
+          </div>
+        );
+      }
+    }
+
+      ReactDOM.render(<MyComponent />, mountNode);
+    </script>
+</body>
+
+</html>
