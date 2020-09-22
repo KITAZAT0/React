@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+    <div id="mountNode"></div>
+
+    <script type="text/babel">
+
+        /* list.concat(addItem); */
+        /* newarray = numbers.map(myFunction) */
+
+
+        var mountNode = document.getElementById('mountNode');
+
+        class AddComponent extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
+            addtache = () => {
+                this.props.comParent(this.input.value);
+
+            }
+
+            render() {
+                return (
+                    <>
+                        <h2>Assigner une tâche: </h2>
+
+                        <input placeholder="doit faire..." ref={(input) => this.input = input} />
+                        <button onClick={this.addtache}>Add</button>
+
+                        <h2>Tâches: </h2>
+
+
+
+
+                    </>
+                );
+            }
+        }
+        class MainComponent extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    taches: [],
+                    list: ["Julien", "Christophe", "Roby"],
+                    tache: "Julien",
+                };
+                this.comChild = this.comChild.bind(this)
+            };
+
+            changeName = (key) => {
+                this.setState({ tache: this.state.list[key] })
+            }
+
+            comChild = (value) => {
+                console.log(value);
+                this.setState({ tache: this.state.tache.concat([this.input.value]) });
+            }
+
+            render() {
+                return (
+                    <>
+                        <h1>Tâche pour {this.state.tache} </h1>
+                        <h2>Choisir un membre:</h2>
+                        <ul>
+                            {this.state.list.map((item, index) => (
+                                <li onClick={this.changeName.bind(this, index)} key={index}>{index} : {item}</li>
+                            ))}
+                        </ul>
+                        <AddComponent comParent={this.comChild} />
+
+
+                    </>
+
+                );
+            }
+        }
+        ReactDOM.render(<MainComponent />, mountNode);
+    </script>
+</body>
+
+</html>

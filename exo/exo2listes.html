@@ -40,17 +40,17 @@
             }
             render() {
                 return (
-                    <div>
+                    <>
                         <input ref={(input) => this.input = input} />  {/* ref input devient Object avec le this.input prend comme valeur input*/}
                         <div>
                             <ul>
-                                {this.state.list.map((item, index) => (
+                                {this.state.list.map((item, index) => ( /* map est equivalent à foreach*/
                                     <li key={index}>{index} : {item}</li>
                                 ))}
                             </ul>
                         </div>
                         <button onClick={this.addItem}>Add</button>
-                    </div>
+                    </>
                 );
             }
         }
