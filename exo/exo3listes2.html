@@ -26,12 +26,13 @@
         var mountNode = document.getElementById('mountNode');
 
         class AddComponent extends React.Component {
-            constructor(props) {
-                super(props);
+            constructor() {
+                super();
             }
 
             addtache = () => {
                 this.props.comParent(this.input.value);
+                this.input.value = "";
 
             }
 
@@ -53,8 +54,8 @@
             }
         }
         class MainComponent extends React.Component {
-            constructor() {
-                super();
+            constructor(props) {
+                super(props);
                 this.state = {
                     taches: [],
                     list: ["Julien", "Christophe", "Roby"],
@@ -69,7 +70,8 @@
 
             comChild = (value) => {
                 console.log(value);
-                this.setState({ tache: this.state.tache.concat([this.input.value]) });
+                value = this.state.tache + ' doit faire ' + value;
+                this.setState({ taches: this.state.taches.concat([value]) });
             }
 
             render() {
@@ -83,6 +85,12 @@
                             ))}
                         </ul>
                         <AddComponent comParent={this.comChild} />
+
+                        <ul>
+                            {this.state.taches.map((item, index) => {
+                                return <li key={index}>{item}</li>;
+                            })}
+                        </ul>
 
 
                     </>
