@@ -13,23 +13,23 @@
   <div id="mountNode"></div>
 
   <script type="text/babel">
-      var mountNode = document.getElementById('mountNode');
+    var mountNode = document.getElementById('mountNode');
 
-      class MyComponent extends React.Component {
+    class MyComponent extends React.Component {
 
-        render() {
-          const numbers = [1, 2, 3, 4, 5];
-          const doubled = numbers.map((number, index) => <li key={index}>{number * 3}</li>);
-          return (
-            <h1 >
-              {doubled}
-            </h1>
-          );
-        }
+      render() {
+        const numbers = [1, 2, 3, 4, 5];
+        const doubled = numbers.map((number, index) => <li key={index}>{number * 2}</li>);
+        return (
+          <h1 >
+            {doubled}
+          </h1>
+        );
       }
+    }
 
-      ReactDOM.render(<MyComponent />, mountNode);
-    </script>
+    ReactDOM.render(<MyComponent />, mountNode);
+  </script>
 </body>
 
 </html>
