@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import{FaListAlt,FaCheckSquare,FaPlusSquare,FaTrash}from'react-icons/fa';
+//import logo from './logo.svg';
+import './../css/App.css';
+import { FaListAlt, FaCheckSquare, FaPlusSquare, FaTrash } from 'react-icons/fa';
 
 function App() {
   return (
